@@ -16,8 +16,12 @@
     in {
       devShells = {
         default = pkgs.mkShell {
+          shellHook = ''
+            raco pkg install --auto racket-langserver
+            raco pkg install --auto fmt
+          '';
           packages = with pkgs; [
-            racket-minimal
+            racket
           ];
         };
       };
